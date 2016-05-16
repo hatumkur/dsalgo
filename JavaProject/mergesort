@@ -1,0 +1,41 @@
+// Merge Sort
+
+/*       8 3 5 9 4 11 1 2 14
+    8 3 5 9 4     11 1 2 14
+    8 3 5    9 4
+    8 3    5
+    8   3
+    
+    use a auxillary space equal to the lenght of the array
+*/
+
+void mergeSort(int[] a) {
+    int[] temp = new int[a.length];
+    
+    // copy input to temporary array
+    for(int i = 0; i < a.length; i++) {
+        temp[i] = a[i];
+    }
+    
+    mergeSort(a, temp, 0, a.length-1);
+    
+}
+
+void mergeSort(int[] a, int[] temp, int left, int high) {
+    if(left < high) {
+        int mid = (left + high) / 2;
+        mergeSort(a, temp, left, mid);
+        mergeSort(a, temp, mid+1, high);
+        merge(a, temp, left, mid, right);
+    }
+}
+
+void merge(int[] a, input[] t, int left, int mid, int right) {
+    // validate
+    if(left > mid || right >= a.length || mid > right) {
+        return;
+    }
+    
+    
+
+}  

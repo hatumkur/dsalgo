@@ -1,0 +1,280 @@
+SDE 3 III questions
+
+1) Find the minimum (index) distance sum of 3 words. For example: 
+   arr = { "2", "1", "0", "2", "0", "3", "0" } input = "1" "2" "3". 
+   The result should be 8. Implement this in O(N)
+   
+   def minimum_distance_sum(words, a, b, c):
+	last_a = -1
+	last_b = -1
+        last_c = -1
+        min_distance = INT_MAX
+	for i, word in enumerate(words):
+		if word == a:
+			last_a = i
+		elif word == b:
+			last_b = i
+		elif word == c:
+			last_c = i
+
+		if last_a >= 0 and last_b >= 0 and last_c >= 0:
+			min_distance = min(min_distance, abs(last_a-last_c)+abs(last_a-last_b)+abs(last_b-last_c))
+	
+	return min_distance
+	
+	
+2) Given a million list of co-ordinates in the form of longitude and latitude just as Google maps .How will you print closest k cities to a given location .
+
+Sol: An easier and intuitive solution would be to have max heap of distances. Its size needs to be limited with k. Given point (a,b) to look for k closest cities, for each (x,y) in the coordinates list, find the distance between (a,b) and (x,y). If distance is smaller than the top element of max heap, throw the max element away and put the new distance into the max heap. At the end of scanning the list, heap will have the closest points to the point (a,b).
+
+Complexity of the algorithm above depends on the input and the size of k.
+
+Another way is to do what quick sort does. Find the pivot with a custom comparison that is distance of two coordinates. Keep finding pivot recursively on the range it resides until the pivot is k.
+
+3) Price rule of parking
+==============================================================
+    Given start time and end time of parking (below is the table of price rule). Come up with data structure you can store these price rules
+
+    Price Rules:
+    On Weekday On Weekend
+    Hours Price Hours Price
+    0 – 2 $5 0 – 2 $8
+    2 – 6 $10 2 – 6 $13
+    6 – 12 $15 6 – 12 $18
+    12 – 24 $20 12 – 24 $25
+
+    Design an architecture for the system which shows parking spaces available near customer's location in a mobile app.
+    
+    Sol: Assuming prices are charged by hour, the most efficient (and simpler) way of storing the price rules is just an array:
+arr[h] = price --> where h = hours - 1
+This gives you O(1) query time and O(1) (hours are limited to 24) storage time
+
+While a Balanced Interval Tree makes sense for a more general case, you should always consider the specifics of the problem.
+
+For the architecture design point. I think the previous answer is a good idea:
+" you can get geoLocation of the mobile application and use near functionality in mongo."
+
+For a more vendor agnostic (and architecture complete) solution:
+- get the customers location from the mobile device's location service (could be GPS or whatever)
+- send the location to a (load balanced) web server to solve the request
+- the web server will consult a k-d tree-like structure to find the corresponding price map, given the coordinates (could be another service)
+- the price map will be as described before
+
+Of course, you should have some caching mechanism in your architecture if you expect to scale.
+
+4) Login failures : isAccountHacked
+==========================================================
+
+Assume you have a function isAccountHacked(String username) This function is called by a system whenever a there is a failed login by a particular username.
+The function returns true if there have been "n" consecutive unsuccessful login attempts in the last 1hr/36,000 seconds.How will you write this method.I was asked this question in an interview and I came up with few solutions of logging last n timestamps in 1 hr.
+He wanted a solution with space complexity of timestamps less than O(n).Let me know if you need any more details
+
+5) Mean & Median => Stream of numbers
+==========================================================
+
+You have a stream of numbers coming in (lets say more than a million). The numbers are between [0-999). Implement a class which can
+insert(int i);
+getMean();
+getMedian();
+
+in constant time O(1).
+
+Time: O(1)
+Space: O(1)
+
+public class Statistics {
+    private int[] counter;
+    private long sum;
+    private int n;
+
+    public Statistics() {
+        // initial an array for counter number of
+        // existed of each value in [0-999]
+        counter = new int[1000];
+
+        // sum all insert value
+        sum = 0;
+
+        // n is number of value
+        n = 0;
+    }
+
+    public void insert(int value) {
+        // if insert value not in range [0-999], return
+        if (value >= 1000 || value < 0) {
+            return;
+        }
+
+        // increase counter in this value
+        counter[value]++;
+
+        // calculate sum
+        sum += value;
+
+        // increase number of value
+        n++;
+    }
+
+    public double getMean() {
+        return (double)sum / n;
+    }
+
+    // examples we have:
+    // value:    3   9   11
+    // counter:  1   3   20
+    // n = 1 + 3 + 20 = 24
+    // so median will be value at position 24 / 2 = 12
+    // we will count until meet value at position 12
+    // result is 11
+    public int getMedian() {
+        int medianIndex = (n + 1) / 2;
+        // counter variable
+        int idx = 0;
+        for (int value = 0; value < 1000; value++) {
+            idx += counter[value];
+            if (idx >= medianIndex) {
+                return value;
+            }
+        }
+        return -1;
+    }
+}
+
+
+6) String to Large integer
+============================
+
+Given a string that represents an integer with no upper bound (billions, trillions, etc..), write a function "convert" that returns the integer value of the string. For example: "1000322" returns 1000322.Try to do this in O(1) space, and O(n) time. Better if possible. 
+
+Hint: Use array or vector to represent the large number
+
+7) LCA of non BST
+============================
+
+Given a binary tree, write a function LCA that returns the least common ancestor of two nodes. This is not a BST. Try not to use parent pointers in the custom Node class.
+Iterative solution takes O(1) space, recursive solution takes O(n) space.
+
+8) Unique IP values
+============================
+Given a list of IP address correspondences, such as
+IP1 = IP2
+IP3 = IP4
+IP3 = IP2
+IP5 = IP6
+IP7 = IP8
+etc.
+Return a list of unique IP addresses. In this case
+IP1, IP5, IP7
+Consider IPs as Strings or any other data type.
+
+9) Can you form subsets whose sum are equal?
+===============================================
+Given a list of integers (array or list), write a function that returns true if the list can be split into two lists that have an equal sum.
+Example: {4,2,2,0,-1, 1} returns true
+{4}, {2,2,0,-1,1}
+and {3,3,1} returns false.
+
+Hints by interviewer:
+- Complexity is 2^n
+
+Solution:
+public static boolean permute(ArrayList<Integer> prefix, ArrayList<Integer> input){
+		int sum1 = sum(prefix);
+		int sum2 = sum(input);
+		if(sum1 == sum2){
+			System.out.println("Sum: "+sum1);
+			return true;
+		}
+		else{
+			for(int i=0;i<input.size();i++){
+				//remove the element from input to prefix
+				prefix.add(input.remove(i));
+				
+				boolean value = permute(prefix,input);
+				
+				//add back the value from prefix to input
+				input.add(i, prefix.remove(prefix.size()-1));
+				
+				if(value) return true;
+			}
+		}
+		return false;
+	}
+
+	private static int sum(List<Integer> arr) {
+		int sum =0;
+		for(Integer val : arr){
+			sum+=val;
+		}
+		return sum;
+	}
+	
+10) Ranges of numbers : find the kth smallest number
+======================================================
+there are n ranges of numbers, we need to find the kth smallest element.
+
+One way to find it is to perform a merge sort and return the kth element. but we don;t have extra space. For that we need to write the algorithm,
+
+5th smallest element is 5. 10th smallest element is 7.
+
+11) Top 100 products purchased in past X mins/hours/days
+===========================================================
+Given access to live stream of purchases, design the algorithm to list the top 100 products in past X minutes/hours/days.
+
+12) "Design a distributed Cache"
+===========================================================
+
+
+
+13) SDE: 
+Arrange array of numbers so that negative & positive alternate
+
+14) SDE:
+Traverse a binary tree in zig-zag(spiral) order
+
+15) SDE:
+Given a linked list check whether it is a palindrome or not
+
+16) SDE:
+Maximum of all subarrays of size k(Expected Time Complexity O(N). 
+Input : arr[] = {1, 2, 3, 1, 4, 5, 2, 3, 6} k = 3 Output : 3 3 4 5 5 5 6
+
+17) SDE: TRY
+Given Two sorted array of size size n each. Find the Kth largest element in 
+these two array (Expected Time Complexity Log(n)) 
+Hint: Priority Queue, Bubble sort
+http://algorithmsandme.in/2014/12/find-kth-smallest-element-in-two-sorted-arrays/
+http://ideone.com/MEIpLW
+
+18) SDE:
+Given two node k1 & k2 check whether they are cousin nodes
+
+19) SDE:
+Implement a stack to return middle element of the stack in O(1) time complexity
+Hint: Use DLL & update middle pointer on stack operation
+
+20) SDE: 
+website having several web-pages. And also there are lot many user who are accessing the web-site. 
+say user 1 has access pattern : x->y->z->a->b->c->d->e->f user 2 has access pattern : 
+z->a->b->c->d user 3 has access pattern : y->z->a->b->c->d user 4 has access pattern : a->b->c->d and 
+list goes on for lot many users which are finite and numbered. Now the question is we have to determine 
+the top 3 most occurring k-Page-sequence. for the above example result will be : (k=3) a->b->c , b->c->d , z->a->b. 
+
+Hint: Suffix tree => too complex 
+      Trie & priority queue
+      
+21) SDE:
+Given two array , one of size m+n and contains m element and other position are empty , 2nd array is of size n and 
+contains n element. both array are sorted , now merge the second array to first one such that the resultant array is sorted.
+Expexted time complexity(m+n)
+
+Hint: Merge sort
+
+22) SDE: 
+Merge sort => time O(nlogn) worst case, space O(n)  Not an in-place sort, divide & conquer => recursion
+Quick sort => time O(nlogn) avg case - O(n2) worst case, space O(1) It is in-place sort, randomized quick sort gives O(nlogn) worst case
+Selection sort => time O(n2) avg case, O(1) space
+Bubble sort => time O(n2) avg case, O(1) space 
+Insertion sort => time O(n2) avg case, O(1) space
+
+

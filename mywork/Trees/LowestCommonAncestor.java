@@ -46,7 +46,11 @@ public Node lowestCommonAncesor(Node root, Node p, Node q) {
     // Validate input
     if(!isNodePartOfTree(root, p) || !isNodePartOfTree(root, q)){
         return null;
+    } else if(isNodePartOfTree(p,q)) {
+        return p;
+    } else if(isNodePartOfTree(q, p)) {
+        return q;
     }
 
-  return findLCA(root, p, q);
+    return findLCA(root, p, q);
 }

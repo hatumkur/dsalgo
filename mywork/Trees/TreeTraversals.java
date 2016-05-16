@@ -69,9 +69,28 @@ public void preorderTraversal(Node root, LinkedList<Node> results) {
 
     if(root == null) return;
 
-    inorderTraversal(root.left, results);
     results.add(Node);
-    inorderTraversal(root.right, results);
+    preorderTraversal(root.left, results);
+    preorderTraversal(root.right, results);
+}
+
+public LinkedList<Node> preorderTraversal(Node root) {
+    LinkedList<Node> results = new LinkedList<Node>();
+
+    if(root == null) return results;
+
+    Node node = root;
+    LinkedList<Node> stack = new LinkedList<Node>();
+    stack.push(node);
+
+    while(!stack.isEmpty()) {
+        node = stack.pop();
+        if(node != null) {
+            results.add(node);
+            if(node.left != null) stack.push(node.left);
+            if(node.right != null) stack.push(node.right);
+        }
+    }
 }
 
 /*

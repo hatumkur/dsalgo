@@ -66,8 +66,8 @@ public class Node {
 		}
 		int mid = (start + end) / 2;
 		Node n = new Node(arr[mid]);
-		n.setLeftChild(createMinimalBST(arr, start, mid - 1));
-		n.setRightChild(createMinimalBST(arr, mid + 1, end));
+		n.left = createMinimalBST(arr, start, mid - 1);
+		n.right = createMinimalBST(arr, mid + 1, end);
 		return n;
 	}
 

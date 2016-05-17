@@ -53,10 +53,19 @@ class Graph {
     public void addVertex(Vertex v) { }
     public void addEdge(Edge e) { }
     public int getVertexIndex(String name) {}
+    public Vertex[] getVertices() {}
+    public Edge[] getAdjacencies(int vIndex) {}
+    public Edge[][] getAdjacencyMatrix() {}
 }
 
 /*
     (2) Adjacency List
+
+    1 : 4 -> 5
+    2 : 3
+    3 : 5
+    4 : 1
+    5 : 4 -> 1 
 */
 
 class Graph {
@@ -71,4 +80,7 @@ class Graph {
     public void addVertex(Vertex v) {}
     public void addEdge(Edge e) {}
     public int getVertexIndex(String name) {}
+    public ArrayList<Vertex> getVertices() {}
+    public LinkedList<Edge> getAdjacencies(int vIndex) {}
+    public ArrayList< LinkedList<Edge> > getAdjacencyList() {}
 }

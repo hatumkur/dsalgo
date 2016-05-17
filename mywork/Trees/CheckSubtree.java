@@ -49,7 +49,6 @@ private boolean checkSubtree(Node t1, Node t2) {
     } else if(t2.data == t1.data && matchSubtree(t1, t2)) {
         return true;
     }
-
     // check on the left or right side for t2
     return checkSubtree(t1.left, t2) || checkSubtree(t1.right, t2);
 }

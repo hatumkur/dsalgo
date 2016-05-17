@@ -65,22 +65,22 @@ class Graph {
     2 : 3
     3 : 5
     4 : 1
-    5 : 4 -> 1 
+    5 : 4 -> 1
 */
 
 class Graph {
-    private ArrayList<Vertex> vertices;
-    private ArrayList< LinkedList<Edge> > adjacencies;
-    private boolean isDirected;
+     private ArrayList<Vertex> vertices;
+     private ArrayList< LinkedList<Edge> > adjacencies;
+     private boolean isDirected;
 
-    // Looks up vertexIndex by vertexname
-    private HashMap<String, Integer> verticesMap;
+     // Looks up vertexIndex by vertex name
+     private HashMap<String, Integer> verticesMap;
 
-    public Graph(boolean isDirected) {}
-    public void addVertex(Vertex v) {}
-    public void addEdge(Edge e) {}
-    public int getVertexIndex(String name) {}
-    public ArrayList<Vertex> getVertices() {}
-    public LinkedList<Edge> getAdjacencies(int vIndex) {}
-    public ArrayList< LinkedList<Edge> > getAdjacencyList() {}
-}
+     public Graph(boolean isDirected) {}
+     public void addVertex(Vertex v) {}
+     public void addEdge(Edge e) {}
+     public int getVertexIndex(String vname) {}
+     public ArrayList<Vertex> getVertices() {}
+     public LinkedList<Edge> getAdjacencies(String vname) {}
+     public ArrayList< LinkedList<Edge> > getAdjacencyList() {}
+ }

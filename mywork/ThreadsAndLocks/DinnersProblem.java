@@ -29,7 +29,7 @@ class Philosophor extends Thread {
             return false;
         }
         if(!right.pickup()) {
-            left.keepDown(); // IF YOU COMMENT THIS LINE then DEADLOCK can occur
+            left.keepDown(); //IF YOU COMMENT THIS LINE then DEADLOCK can occur
             return false;
         }
 

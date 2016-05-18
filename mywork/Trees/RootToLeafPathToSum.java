@@ -16,6 +16,8 @@
     Recursively check if left or right child has path sum equal to ( number –
         value at current node)
 
+    Hint: Preorder traversal
+
 */
 
 public boolean hasRootToLeafPathToSum(Node root, int sum) {

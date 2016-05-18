@@ -74,7 +74,7 @@ public void preorderTraversal(Node root, LinkedList<Node> results) {
     preorderTraversal(root.right, results);
 }
 
-public LinkedList<Node> preorderTraversal(Node root) {
+public LinkedList<Node> preorderTraversalIter(Node root) {
     LinkedList<Node> results = new LinkedList<Node>();
 
     if(root == null) return results;

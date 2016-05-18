@@ -29,7 +29,7 @@ public boolean isTreeBalanced(Node root) {
 }
 
 public int getHeight(Node root) {
-    if(root == null) return -1;
+    if(root == null) return 0;
 
     return Math.max(getHeight(root.left), getHeight(root.right)) + 1;
 }
@@ -40,13 +40,13 @@ public boolean isTreeBalanced2(Node root) {
 }
 
 public int getHeight2(Node root){
-    if(root == null) return -1;
+    if(root == null) return 0;
 
-    int lh = getHeight(root.left);
-    if(lh == Integer.MIN_VALUE) return lh;
+    int lh = getHeight2(root.left);
+    if(lh == Integer.MIN_VALUE) return Integer.MIN_VALUE;
 
-    int rh = getHeight(root.right);
-    if(rh == Integer.MIN_VALUE) return rh;
+    int rh = getHeight2(root.right);
+    if(rh == Integer.MIN_VALUE) return Integer.MIN_VALUE;
 
     if(Math.abs(lh - rh) <= 1) {
         return Math.max(lh, rh) + 1;

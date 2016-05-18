@@ -10,11 +10,14 @@
 
 void bubbleSort(int[] a) {
   int n = a.length;
-  for(int i = 0; i < n-1; i++) {
-    for(int j = 0; j < n-i-1; j++) {
-      if(a[i] > a[j]) {
-        swap(a, i, j);
-      }
+  int m = 0;
+
+    while(m < n) {
+        for(int i = m; i < n-m-1; i++) {
+            if(a[i] > a[i+1]) {
+                swap(a, i, i+1);
+            }
+        }
+        m++;
     }
-  }
 }

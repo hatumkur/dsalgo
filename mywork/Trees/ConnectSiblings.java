@@ -19,6 +19,7 @@ public ArrayList< LinkedList<Node> > connectSiblings(Node root, int level,
     LinkedList<Node> levelList = arrlist.get(level);
     if(levelList == null) {
         levelList = new LinkedList<Node>();
+        arrlist.add(levelList);
     }
     levelList.add(root);
 

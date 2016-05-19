@@ -74,12 +74,12 @@ class Graph {
      private boolean isDirected;
 
      // Looks up vertexIndex by vertex name
-     private HashMap<String, Integer> verticesMap;
+     private HashMap<String, Vertex> verticesMap;
 
      public Graph(boolean isDirected) {}
      public void addVertex(Vertex v) {}
      public void addEdge(Edge e) {}
-     public int getVertexIndex(String vname) {}
+     public Vertex vertexByName(String vname) {}
      public ArrayList<Vertex> getVertices() {}
      public LinkedList<Edge> getAdjacencies(String vname) {}
      public ArrayList< LinkedList<Edge> > getAdjacencyList() {}

@@ -41,7 +41,7 @@ void merge(int[] a, input[] t, int low, int mid, int high) {
         tlow++;  // move the low cursor
       } else {
         a[curr] = temp[thigh]; // copy high value to original array
-        thigh--; // move the high cursor
+        thigh++; // move the high cursor
       }
       curr++; // Move the current cursor
     }

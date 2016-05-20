@@ -1,3 +1,5 @@
+4 plus 1 view
+---------------------------------------
 1) Logical View
 		Class diagram
 		Object diagram
@@ -19,3 +21,10 @@
 
 
 Scenarios => Use cases
+
+System Design considerations
+-----------------------------------------
+1) Ease of use for users
+2) Ease of development
+3) Flexibility & Extensions
+4) Scalability & Effeciecy

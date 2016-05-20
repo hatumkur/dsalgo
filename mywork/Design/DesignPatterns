@@ -1,0 +1,30 @@
+Creational Patterns
+---------------------
+Factory Method
+Abstract Factory
+Singleton
+Prototype
+Builder
+Object Pool
+
+
+Structural Patterns
+---------------------
+Adapter/Wrapper/Translator
+Bridge
+Composite
+Decorator
+Facade
+Flyweight
+Proxy
+
+
+Behavioral Patters
+---------------------
+Observer/Publish-Subscribe
+Chain of Responsibility
+Memento
+Mediator
+State
+Strategy
+Template

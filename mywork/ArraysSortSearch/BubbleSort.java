@@ -9,15 +9,13 @@
 */
 
 void bubbleSort(int[] a) {
-  int n = a.length;
-  int m = 0;
+    int n = a.length;
 
-    while(m < n) {
-        for(int i = m; i < n-m-1; i++) {
-            if(a[i] > a[i+1]) {
-                swap(a, i, i+1);
+    for(int i = 0; i < n; i++) {
+        for(int j = i; j < n-i-1; j++) {
+            if(a[j] > a[j+1]) {
+                swap(a, j, j+1);
             }
         }
-        m++;
     }
 }

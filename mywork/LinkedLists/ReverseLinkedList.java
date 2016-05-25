@@ -24,9 +24,9 @@ public Node reverseList(Node head) {
     Node prev = null;
 
     while(curr != null) {
-        next = curr.next;
+        next = curr.next; // store next
         curr.next = prev;
-        prev = curr;
+        prev = curr;   // store next
         curr = next;
     }
 
@@ -58,6 +58,7 @@ public Node reverseList(Node head) {
             head = curr;
         }
     }
+    curr.next = null;
 
     return head;
 }

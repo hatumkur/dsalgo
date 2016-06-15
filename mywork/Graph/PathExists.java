@@ -30,6 +30,25 @@ to drive from New York to California, Dijkstra is a poor choice for self evident
 Like SplinterReality said: There's no reason not to use Dijkstra's algorithm here.
 The code below I nicked from here and modified it to solve the example in the question.
 */
+class Vertex {  // implement comparable interface
+    private String name;
+    public String name();
+
+    public Vertex(String name) {
+        this.name = name;
+    }
+}
+
+class Edge { // implement comparable interface
+    int startVertex, endVertex;
+    int weight;
+
+    public Edge(int firstVIndex, int secondVIndex, int weight) {
+        this.startVertex = firstVIndex;
+        this.endVertex = secondVIndex;
+        this.weight = weight;
+    }
+}
 
 class Graph {
      private ArrayList<Vertex> vertices;
@@ -44,12 +63,14 @@ class Graph {
      public void addEdge(Edge e) {}
      public int getVertexIndex(String vname) {}
      public ArrayList<Vertex> getVertices() {}
+     public Vertex getVertexByName(String name) {}
+     public Vertex getVertexByIndex(int index) {}
      public LinkedList<Edge> getAdjacencies(String vname) {}
      public ArrayList< LinkedList<Edge> > getAdjacencyList() {}
  }
 
 public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
-    if(g == null) return false;
+    if(g == null || source == null || dest == null) return false;
 
     // Key: Vertex.name  Value: Visited or not flag
     HashMap<String, Boolean> visitedMap = new HashMap<String, Boolean>();
@@ -81,9 +102,9 @@ public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
         while(adjList != null && adjList.size() > 0) {
             Edge e = adjList.removeFirst();
 
-            String endName = g.getVertex(e.endVertex).name;
+            String endName = g.getVertexByIndex(e.endVertex).name;
             // If destination node found then return
-            if(endName.equals(dest.name) == 0) {
+            if(endName.compareTo(dest.name) == 0) {
                 //System.out.println(" " + dest.name);
                 return true;
             }

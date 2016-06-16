@@ -47,8 +47,8 @@ boolean isPalindrome(Node root) {
 Node reverse(Node root){
     if(root == null) return false;
 
-    Node prev = null;
     Node curr = root;
+    Node prev = null;
     Node next = null;
     //Node temp = null;
 

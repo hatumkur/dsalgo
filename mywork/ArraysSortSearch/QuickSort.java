@@ -11,7 +11,7 @@ Space => O(1) Doesn't uses auxilary array.
 
 */
 
-void quickSort(int[] a, int left, int right) {
+public void quickSort(int[] a, int left, int right) {
   int pvindex = partition(a, left, right);
   if(left < pvindex - 1) {
     quickSort(a, left, pvindex - 1);
@@ -22,7 +22,7 @@ void quickSort(int[] a, int left, int right) {
   }
 }
 
-int partition(int[] a, int left, int right) {
+private int partition(int[] a, int left, int right) {
   int pivot = a[(left + right)/2];
   while(left <= right){
     while(arr[left] < pivot) left++;

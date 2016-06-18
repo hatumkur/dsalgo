@@ -11,12 +11,12 @@
     Space = O(n)
 */
 
-void mergeSort(int[] a) {
+public void mergeSort(int[] a) {
     int[] temp = new int[a.length];
     mergeSort(a, temp, 0, a.length-1);
 }
 
-void mergeSort(int[] a, int[] temp, int low, int high) {
+private void mergeSort(int[] a, int[] temp, int low, int high) {
     if(low < high) {
         int mid = (low + high) / 2;
         mergeSort(a, temp, low, mid);
@@ -25,7 +25,7 @@ void mergeSort(int[] a, int[] temp, int low, int high) {
     }
 }
 
-void merge(int[] a, input[] t, int low, int mid, int high) {
+private void merge(int[] a, int[] temp, int low, int mid, int high) {
     // copy input to temporary array
     for(int i = low; i <= high; i++) {
         temp[i] = a[i];

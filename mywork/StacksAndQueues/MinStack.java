@@ -15,11 +15,10 @@ class MinStack{
         stack.push(val);
         boolean pushMin = false;
         if(!minStack.isEmpty()){
-            if(minStack.peek() > val) pushMin = true;
+            if(minStack.peek() > val) minStack.push(val);
         } else {
-            pushMin = true;
+            minStack.push(val);
         }
-        minStack.push(val);
     }
 
     public Integer pop() {
@@ -38,6 +37,6 @@ class MinStack{
     }
 
     public Integer min() {
-        return stack.isEmpty() ? null : minStack.peek(); 
+        return stack.isEmpty() ? null : minStack.peek();
     }
 }

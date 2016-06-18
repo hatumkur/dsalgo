@@ -35,10 +35,10 @@ public List<Integer> inorderTraversalIter(Node root) {
         Node top = stack.peek();
         if(top.left != null){
             stack.push(top.left);
-            top.left = null;
+            //top.left = null;
         }else{
-            result.add(top.val);
             stack.pop();
+            result.add(top.data);
             if(top.right != null){
                 stack.push(top.right);
             }
@@ -47,7 +47,7 @@ public List<Integer> inorderTraversalIter(Node root) {
     return result;
 }
 
-public void inorderTraversal(Node root, LinkedList<Node> results) {
+public void inorderTraversal(Node root, LinkedList<Integer> results) {
     if(results == null) {
         results = new LinkedList<Node>();
     }
@@ -55,7 +55,7 @@ public void inorderTraversal(Node root, LinkedList<Node> results) {
     if(root == null) return;
 
     inorderTraversal(root.left, results);
-    results.add(Node);
+    results.add(Node.data);
     inorderTraversal(root.right, results);
 }
 /*
@@ -74,8 +74,8 @@ public void preorderTraversal(Node root, LinkedList<Node> results) {
     preorderTraversal(root.right, results);
 }
 
-public LinkedList<Node> preorderTraversalIter(Node root) {
-    LinkedList<Node> results = new LinkedList<Node>();
+public LinkedList<Integer> preorderTraversalIter(Node root) {
+    LinkedList<Integer> results = new LinkedList<Integer>();
 
     if(root == null) return results;
 
@@ -86,7 +86,7 @@ public LinkedList<Node> preorderTraversalIter(Node root) {
     while(!stack.isEmpty()) {
         node = stack.pop();
         if(node != null) {
-            results.add(node);
+            results.add(node.data);
             if(node.left != null) stack.push(node.left);
             if(node.right != null) stack.push(node.right);
         }
@@ -107,8 +107,8 @@ public void postorderTraversal(Node root, LinkedList<Node> results) {
     results.add(root);
 }
 
-public LinkedList<Node> postorderIter(Node root) {
-    LinkedList<Node> results = LinkedList<Node>();
+public LinkedList<Integer> postorderIter(Node root) {
+    LinkedList<Integer> results = LinkedList<Integer>();
 
     Node node = root;
     LinkedList<Node> stack1 = LinkedList<Node>();

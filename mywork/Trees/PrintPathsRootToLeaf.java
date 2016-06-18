@@ -21,7 +21,7 @@ public ArrayList<String> pathsFromRootToLeaf(Node root) {
     String pathStr = null;
 
     stack.push(root);
-    pathStack.push(root.data + "->");
+    pathStack.push(root.data + " ");
 
     while(!stack.isEmpty()) {
         node = stack.pop();
@@ -35,7 +35,7 @@ public ArrayList<String> pathsFromRootToLeaf(Node root) {
             stack.push(node.left);
             pathStack.push(pathStr + node.left.data + " ");
         }
-        if(node.left != null) {
+        if(node.right != null) {
             stack.push(node.right);
             pathStack.push(pathStr + node.right.data + " ");
         }
@@ -47,20 +47,21 @@ public ArrayList<String> pathsFromRootToLeaf(Node root) {
 /*
     Recursive solution
 */
-public ArrayList<String> pathsFromRootToLeafRecur(Node root, String pathStr,
+private ArrayList<String> pathsFromRootToLeafRecur(Node root, StringBuilder pathStr,
                                     ArrayList<String> results) {
     if(results == null) {
         results = new ArrayList<String>();
     }
     if(pathStr == null) {
-        pathStr = new String("");
+        pathStr = new StringBuilder();
     }
 
     if(root == null) return results;
-    pathStr = pathStr + root.data + " ";
+    pathStr = pathStr.append(root.data + " ");
 
     if(root.left == null && root.right == null) {
-        results.add(pathStr);
+        results.add(pathStr.toString());
+        pathStr.setLength(0);//clear
     }
 
     if(root.left != null) {
@@ -71,4 +72,8 @@ public ArrayList<String> pathsFromRootToLeafRecur(Node root, String pathStr,
     }
 
     return results;
+}
+
+public ArrayList<String> pathsFromRootToLeaf(Node root){
+    return pathsFromRootToLeafRecur(root,null,null);
 }

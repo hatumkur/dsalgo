@@ -17,7 +17,7 @@ public boolean isSubtree(Node t1, Node t2) {
     StringBuilder sb1 = preorderString(t1, null);
     StringBuilder sb2 = preorderString(t2, null);
 
-    return (sb2.indexOf(s1.toString()) != -1);
+    return (sb2.indexOf(sb1.toString()) != -1);
 }
 
 public StringBuilder preorderString(Node node, StringBuilder result) {

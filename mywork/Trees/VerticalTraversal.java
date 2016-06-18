@@ -44,6 +44,10 @@ public void printInVerticalOrder(Node root) {
     TreeMap<Integer, ArrayList<Integer>> treemap = verticalTraversal(root, 0, null);
 
     for(int key : treemap.keySet()) {
-        System.out.println(treemap.get(key));
+        ArrayList<Integer> array = treemap.get(key);
+        for(int i = 0; i < array.length(); i++ ) {
+            System.out.println(array.get(i) + "  ");
+        }
+        System.out.println();
     }
 }

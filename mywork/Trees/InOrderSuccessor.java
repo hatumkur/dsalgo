@@ -35,6 +35,10 @@ class Node {
 }
 /*
 ------------------------------ Solution 1 -------------------------------------
+
+           6
+        3       9
+    1     2   7    10
 */
 public Node inorderSuccessor(Node root, Node p) {
     if(root == null) return result;
@@ -47,14 +51,13 @@ public Node inorderSuccessor(Node root, Node p) {
 
         if(top.left != null){
             stack.push(top.left);
-            top.left = null;
+            //top.left = null;
         } else {
             stack.pop();
             if(top == p ) { // if node under search is found
                 foundNode = true;
-            }
-            if(foundNode){
-                return top; // In order successor
+            } else if(foundNode) {
+                return top;
             }
 
             if(top.right != null){

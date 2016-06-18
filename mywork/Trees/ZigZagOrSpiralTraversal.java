@@ -10,21 +10,20 @@
               Spae: O(n)
 */
 
-public LinkedList<Node> spiralTraversal(Node root) {
-    LinkedList<Node> result = new LinkedList<Node>();
+public LinkedList<Integer> spiralTraversal(Node root) {
+    LinkedList<Integer> result = new LinkedList<Integer>();
 
     Node node = root;
     LinkedList<Node> s1 = new LinkedList<Node>();
     LinkedList<Node> s2 = new LinkedList<Node>();
     s1.push(node);
-    boolean spiralToggle = false;
 
     while(!s1.isEmpty() || !s2.isEmpty()) {
 
         while(!s1.isEmpty()) {
             node = s1.pop();
             if(node != null) {
-                result.add(node);
+                result.add(node.data);
                 if(node.right != null) s2.push(node.right); // reverse order
                 if(node.left != null) s2.push(node.left); // reverse order
             }
@@ -33,7 +32,7 @@ public LinkedList<Node> spiralTraversal(Node root) {
         while(!s2.isEmpty()) {
             node = s2.pop();
             if(node != null) {
-                result.add(node);
+                result.add(node.data);
                 if(node.left != null) s1.push(node.left);
                 if(node.right != null) s1.push(node.right);
             }

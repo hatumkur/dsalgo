@@ -26,7 +26,7 @@ private void doPermute(char[] input, StringBuilder out, boolean[] used, int leng
 	}
 }
 
-doCombine(char[] in, StringBuilder out, int length, int start, int level) {
+private void doCombine(char[] in, StringBuilder out, int length, int start, int level) {
 
 	for(int i = start; i < length; i++) {
 		out.append(in[i]);

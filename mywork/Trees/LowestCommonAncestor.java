@@ -17,7 +17,7 @@ class Node {
 
 // Method: isNodePartOfTree
 // Returns: true if 'p' node exists in the tree else false
-public boolean isNodePartOfTree(Node root, Node p) {
+private boolean isNodePartOfTree(Node root, Node p) {
   if(root == null) return false;
 
   if(root == p) return true;
@@ -27,7 +27,7 @@ public boolean isNodePartOfTree(Node root, Node p) {
 
 // Root node is LCA/FCA if 'p' & 'q' is not on the same side of the tree(left/right)
 //
-public Node findLCA(Node root, Node p, Node q) {
+private Node findLCA(Node root, Node p, Node q) {
     if(root == null || p == null || q == null) return null;
 
     boolean pfoundLeft = isNodePartOfTree(root.left,p); // p found left ?

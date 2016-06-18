@@ -16,11 +16,14 @@ public ArrayList< LinkedList<Node> > connectSiblings(Node root, int level,
 
     if(root == null) return arrlist;
 
-    LinkedList<Node> levelList = arrlist.get(level);
-    if(levelList == null) {
+    LinkedList<Node> levelList = null;
+    if(level <= arrlist.size()) {
+        arrlist.get(level);
+    } else {
         levelList = new LinkedList<Node>();
         arrlist.add(levelList);
     }
+    
     levelList.add(root);
 
     if(root.left != null) connectSiblings(root.left, level+1, arrlist);

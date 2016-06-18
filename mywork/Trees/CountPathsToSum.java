@@ -7,9 +7,10 @@ public int countPathWithSum(Node root, int sum) {
 
     int totalRootCount = countPathWithSum(root, sum, 0);
 
-    int totalLeftCount = countPathWithSum(root, sum);
-    int totalRightCount = countPathWithSum(root, sum);
-    return 0;
+    int totalLeftCount = countPathWithSum(root.left, sum);
+    int totalRightCount = countPathWithSum(root.right, sum);
+
+    return totalCount + totalLeftCount + totalRightCount;
 }
 
 private int countPathWithSum(Node root, int sum, int currSum) {

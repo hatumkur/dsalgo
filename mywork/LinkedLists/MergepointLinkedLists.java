@@ -52,7 +52,9 @@ Node findMergeNode(Node list1, Node list2){
 
 /*
 Solution3: Reference progressing, advance longer list by number of nodes
-           so that compare the references Time: O(n) Space: O(1)
+           so that compare the references
+           Time: O(m+n) => O(n)
+           Space: O(1) 
 */
 Node findMergeNode(Node list1, Node list2){
     if(list1 == null || list2 == null ) return null;
@@ -80,7 +82,7 @@ Node findMergeNode(Node list1, Node list2){
     }
 
     Node result = null;
-    while(n1 != null){
+    while(n1 != null && n2 != null){
         if(n1 == n2) {
             result = n1;
             break;

@@ -4,7 +4,7 @@
 */
 /*
  * (1) If openening parenthesis push to stack
- * (2) If closing parenthesis pop, compare failure => NB otherwise loop till end
+ * (2) If closing parenthesis pop, on match failure => NB otherwise loop till end
  * (3) End stack is non empty => NB otherwise => B
  *
  */

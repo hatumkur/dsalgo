@@ -37,7 +37,7 @@ public Node reverseList(Node head) {
 /*
     Solution2: Using Stack
         Time: O(n)
-        Spae: O(n)
+        Space: O(n)
 */
 public Node reverseList(Node head) {
     if(head == null) return null;
@@ -61,4 +61,45 @@ public Node reverseList(Node head) {
     curr.next = null;
 
     return head;
+}
+
+/*
+Reverse a list using recursion
+Returns new "head"
+*/
+//Node head;
+public void reverseListRecur(Node node, Node newRoot){
+    if(node.next == null) { // Exit condition
+        newRoot = node;
+        return;
+    }
+
+    reverseListRecur(node.next, newRoot);
+    Node prev = node.next;
+    prev.next = node;
+    node = prev;
+}
+
+/*
+    Print elements using recursion in FORWARD direction
+*/
+public printForward(Node root) {
+    if(root == null) {
+        System.out.println();
+        return;
+    }
+    System.out.println(root.data + " ");
+    printForward(root.next);
+}
+
+/*
+    Print elements using recursion in REVERSE direction
+*/
+public printReverse(Node root) {
+    if(root == null) {
+        System.out.println();
+        return;
+    }
+    printReverse(root.next);
+    System.out.println(root.data + " ");
 }

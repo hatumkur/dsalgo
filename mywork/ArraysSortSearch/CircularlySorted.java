@@ -36,9 +36,9 @@ Time: Best O(logn)  Worst O(n)
 public int rotationCountBetter(int[] arr) {
     int mid, next, prev;
     int low = 0;
-    int high = arr.length();
-    int N = arr.length();
-    int count = 0;
+    int high = arr.length - 1;
+    int N = arr.length;
+    int count = -1; // Invalid case: Array is not circularly sorted
 
     while(low < high){
         mid = (low + high) / 2;
@@ -51,12 +51,9 @@ public int rotationCountBetter(int[] arr) {
         if(arr[mid] <= arr[next] && arr[mid] <= arr[prev] ) { // pivot property
             count = mid;
             break;
-        }
-        if(arr[low] <= arr[mid]) { // left is normally sorted
+        } else if(arr[low] <= arr[mid]) { // left is normally sorted
             low = mid + 1;
-        }
-
-        if(arr[mid] <= arr[high]) { // Right is normally sorted
+        } else if(arr[mid] <= arr[high]) { // Right is normally sorted
             high = mid - 1;
         }
     }

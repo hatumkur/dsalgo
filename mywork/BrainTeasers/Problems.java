@@ -6,7 +6,7 @@
                    Step3: R2 burns out (END INDICATOR-EI). Time 15mins => EI - SI
 
 (2) How weighs required to find out one heavier ball given a set of balls & a weight
-        Solution: Ceil(log N) where N => Number of balls
+        Solution: Ceil(log3(N)) where N => Number of balls
 
 (3) How many doors will be open? Open & close alternate one recursively.
         Solution: floor(sqrt(N)) =>  Number of perfect square < N =>

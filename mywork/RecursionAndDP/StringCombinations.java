@@ -11,7 +11,7 @@ public void stringCombinations(char[] in) {
 private void doCombine(char[] in, StringBuilder out, int length, int start, int level) {
 	for(int i = start; i < length; i++) {
 		out.append(in[i]);
-		print
+		print(out.toString());
 		if(i < length - 1) {
 			doCombine(in, out, length, start+1, level+1);
 		}

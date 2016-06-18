@@ -52,3 +52,50 @@ int binarySearch(int[] a, int low, int high, int elem) {
 
   return -1;
 }
+
+/*
+Iterative solution
+    Case1: arr[mid] == elem return mid
+    case2: arr[mid] <= arr[high] then right half is normally sorted
+        2A: elem > arr[mid] && elem <= arr[high]
+            => low = mid + 1
+        2B: else
+            => high = mid - 1
+    case3: arr[low] <= arr[mid] then left half is normally sorted
+        3A: elem >= arr[low] && elem < arr[mid]
+            => high = mid - 1
+        3B: else
+            => low = mid + 1
+*/
+public int circularSortedArraySearch(int[] arr, int elem) {
+    if(arr.length == 0) return -1;
+
+    int high = arr.length - 1;
+    int low = 0;
+    int mid;
+    int result = -1;
+
+    while(low < high) {
+        mid = (low + high) / 2;
+        if(elem == arr[mid]) { // case1
+            result = mid;
+            break;
+        } else if(arr[mid] <= arr[high]) { // case2
+            // case 2A
+            if(elem > arr[mid] && elem <= arr[high]) {
+                low = mid + 1;
+            } else { // case 2B
+                high = mid - 1;
+            }
+        } else if(arr[low] <= arr[mid]) { // case 3
+            // case 3A
+            if(elem >= arr[low] && elem < arr[mid]) {
+                high = mid - 1;
+            } else { // 3B
+                low = mid + 1;
+            }
+        }
+    }
+
+    return result;
+}

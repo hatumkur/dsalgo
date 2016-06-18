@@ -41,3 +41,51 @@ int binarySearchRecur(int[] a, int elem, int low, int high) {
 
   return -1;
 }
+
+// Binary Search index corresponding to FIRST occurance of the number
+int binarySearchFirst(int[] a, int elem) {
+  int low = 0;
+  int high = a.length - 1;
+  int result = -1;
+
+  int mid;
+
+  while(low <= high) {
+    mid = (low + high)/2;
+
+    if(elem > a[mid]) {
+      low = mid + 1;
+    } else if(elem < a[mid]){
+      high = mid - 1;
+    } else {
+      //return mid; // modify to get first occurance
+      result = mid;
+      high = mid - 1;
+    }
+  }
+  return result; // not found
+}
+
+// Binary Search index corresponding to LAST occurance of the number
+int binarySearchLast(int[] a, int elem) {
+  int low = 0;
+  int high = a.length - 1;
+  int result = -1;
+
+  int mid;
+
+  while(low <= high) {
+    mid = (low + high)/2;
+
+    if(elem > a[mid]) {
+      low = mid + 1;
+    } else if(elem < a[mid]){
+      high = mid - 1;
+    } else {
+      //return mid; // modify to get LAST occurance
+      result = mid;
+      low = mid + 1;
+    }
+  }
+  return result; // not found
+}

@@ -14,13 +14,13 @@ Solution2: Better solution with space optimization without strings
 ----------------------------- SOLUTION 1 ---------------------------------------
 */
 public boolean isSubtree(Node t1, Node t2) {
-    StringBuilder sb1 = preorderString(t1, null);
-    StringBuilder sb2 = preorderString(t2, null);
+    StringBuilder sb1 = inorderString(t1, null);
+    StringBuilder sb2 = inorderString(t2, null);
 
     return (sb2.indexOf(sb1.toString()) != -1);
 }
 
-public StringBuilder preorderString(Node node, StringBuilder result) {
+public StringBuilder inorderString(Node node, StringBuilder result) {
     if(result == null) {
         result = new StringBuilder();
     }
@@ -29,9 +29,10 @@ public StringBuilder preorderString(Node node, StringBuilder result) {
         result.add('X'); // To mark 'null'
         return result;
     }
+
+    inorderString(node.left, result);
     result.add(node.data);
-    preorderString(node.left, result);
-    preorderString(node.right, result);
+    inorderString(node.right, result);
 }
 
 /*

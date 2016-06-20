@@ -11,6 +11,7 @@
                    (2) Sum of the sub array is calculated
                    (3) When Sum => negative reset the sub array
                    (4) Every time store the max sum into RESULT
+                Use running sum & sum
 */
 int maxSumSubArray(int[] arr) {
     int result = 0;

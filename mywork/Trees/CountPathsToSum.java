@@ -29,3 +29,34 @@ private int countPathWithSum(Node root, int sum, int currSum) {
 
     return totalCount;
 }
+
+private int countPathWithSum(Node root, int sum, int currSum, HashMap<Node, Integer> map) {
+    if(map == null) {
+        map = new HashMap<>();
+    }
+    if(root == null) return 0;
+
+    if(map.containsKey(root)){
+        return map.get(root);
+    }
+
+    int totalCount = 0;
+    currSum += root.data;
+    if(currSum == sum){
+        totalCount++;
+    } else if(currSum > sum) {
+        map.put(root,totalCount);
+        return totalCount;
+    }
+
+    if(!root.left) {
+        totalCount += countPathWithSum(root.left, sum, currSum);
+    }
+
+    if(!root.right) {
+        totalCount += countPathWithSum(root.right, sum, currSum);
+    }
+
+    map.put(root,totalCount);
+    return totalCount;
+}

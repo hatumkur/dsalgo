@@ -77,7 +77,8 @@ boolean isPalindrome2(Node root){
         stack.push(mid);
         runner = runner.next.next;
     }
-    Node secondHead = mid.next;
+    Node secondHead = mid.next; // for odd number of elements
+    if(!stack.isEmpty()) stack.pop();
     boolean isPalindrome = true;
 
     while(!stack.isEmpty() && secondHead != null) {

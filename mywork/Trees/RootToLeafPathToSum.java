@@ -23,15 +23,14 @@
 public boolean hasRootToLeafPathToSum(Node root, int sum) {
     if(root == null) {
         return (sum == 0);
-    } else {
-        boolean result = false;
-
-        int subsum = sum - root.data;
-        if(subsum == 0 && root.left == null && root.right == null) {
-            return true;
-        }
-
-        return (hasRootToLeafPathToSum(root.left, subsum) ||
-                hasRootToLeafPathToSum(root.right, subsum));
     }
+
+    int subsum = sum - root.data;
+    if(subsum == 0 && root.left == null && root.right == null) {
+        return true;
+    }
+
+    return (hasRootToLeafPathToSum(root.left, subsum) ||
+            hasRootToLeafPathToSum(root.right, subsum));
+
 }

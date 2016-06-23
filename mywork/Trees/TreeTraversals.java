@@ -91,6 +91,8 @@ public LinkedList<Integer> preorderTraversalIter(Node root) {
             if(node.right != null) stack.push(node.right);
         }
     }
+
+    return results;
 }
 
 /*
@@ -117,8 +119,8 @@ public LinkedList<Integer> postorderIter(Node root) {
     while(!stack1.isEmpty()) {
         node = stack1.pop();
         stack2.push(node);
-        if(node.left != null) stack1.push(node.left);
         if(node.right != null) stack1.push(node.right);
+        if(node.left != null) stack1.push(node.left);
     }
 
     while(!stack2.isEmpty()) {

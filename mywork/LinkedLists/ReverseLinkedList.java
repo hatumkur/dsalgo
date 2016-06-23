@@ -14,7 +14,7 @@ class Node{
 /*
     Solution1: Runner technique
         Time: O(n)
-        Spae: O(1)
+        Space: O(1)
 */
 public Node reverseList(Node head) {
     if(head == null) return null;
@@ -68,15 +68,15 @@ Reverse a list using recursion
 Returns new "head"
 */
 //Node head;
-public void reverseListRecur(Node node, Node newRoot){
-    if(node.next == null) { // Exit condition
-        newRoot = node;
+public void reverseListRecur(Node root, Node newRoot){
+    if(root.next == null) { // Exit condition
+        newRoot = root;
         return;
     }
 
-    reverseListRecur(node.next, newRoot);
-    Node prev = node.next;
-    prev.next = node;
+    reverseListRecur(root.next, newRoot);
+    Node prev = root.next;
+    prev.next = root;
     node = prev;
 }
 

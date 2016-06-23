@@ -9,23 +9,25 @@
 
 */
 public ArrayList< LinkedList<Node> > connectSiblings(Node root, int level,
-                                ArrayList< LinkedList<Node> > arrlist ){
+                                ArrayList< LinkedList<Node> > results ){
     if(arrlist == null) {
-        arrlist = new ArrayList< LinkedList<Node> >();
+        results = new ArrayList< LinkedList<Node> >();
     }
 
-    if(root == null) return arrlist;
+    if(root == null) return results;
 
     LinkedList<Node> levelList = null;
-    if(level <= arrlist.size()) {
-        arrlist.get(level);
+    if(level < results.size()) {
+        levelList = results.get(level);
     } else {
         levelList = new LinkedList<Node>();
         arrlist.add(levelList);
     }
-    
+
     levelList.add(root);
 
-    if(root.left != null) connectSiblings(root.left, level+1, arrlist);
-    if(root.right != null) connectSiblings(root.right, level+1, arrlist);
+    if(root.left != null) connectSiblings(root.left, level+1, results);
+    if(root.right != null) connectSiblings(root.right, level+1, results);
+
+    return results;
 }

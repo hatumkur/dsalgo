@@ -40,10 +40,10 @@ class Vertex {  // implement comparable interface
 }
 
 class Edge { // implement comparable interface
-    int startVertex, endVertex;
+    Vertex startVertex, endVertex;
     int weight;
 
-    public Edge(int firstVIndex, int secondVIndex, int weight) {
+    public Edge(Vertex firstVIndex, Vertex secondVIndex, int weight) {
         this.startVertex = firstVIndex;
         this.endVertex = secondVIndex;
         this.weight = weight;
@@ -52,21 +52,15 @@ class Edge { // implement comparable interface
 
 class Graph {
      private ArrayList<Vertex> vertices;
-     private ArrayList< LinkedList<Edge> > adjacencies;
+     private HashMap<Vertex, LinkedList<Edge> > adjacencies;
      private boolean isDirected;
-
-     // Looks up vertexIndex by vertex name
-     private HashMap<String, Integer> verticesMap;
 
      public Graph(boolean isDirected) {}
      public void addVertex(Vertex v) {}
      public void addEdge(Edge e) {}
-     public int getVertexIndex(String vname) {}
      public ArrayList<Vertex> getVertices() {}
-     public Vertex getVertexByName(String name) {}
-     public Vertex getVertexByIndex(int index) {}
-     public LinkedList<Edge> getAdjacencies(String vname) {}
-     public ArrayList< LinkedList<Edge> > getAdjacencyList() {}
+     public LinkedList<Edge> getAdjacencies(Vertex v) {}
+     public HashMap< LinkedList<Edge> > getAdjacencyMap() {}
  }
 
 public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
@@ -89,7 +83,7 @@ public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
 
     // Queue needed for BFS (Breadth First Search)
     LinkedList<Vertex> queue = new LinkedList<Vertex>();
-    visitedMap.put(source.name, true);
+    //visitedMap.put(source.name, true);
     queue.add(source);
 
     Vertex v;
@@ -97,12 +91,14 @@ public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
 
     while(!queue.isEmpty()) {
         v = queue.removeFirst();
+        visitedMap.put(v.name, true);
+        adjList = g.getAdjacencies(v);
 
-        adjList = g.getAdjacencies(v.name);
         while(adjList != null && adjList.size() > 0) {
             Edge e = adjList.removeFirst();
 
-            String endName = g.getVertexByIndex(e.endVertex).name;
+            Vertex vert = e.endVertex;
+            String endName = vert.name;
             // If destination node found then return
             if(endName.compareTo(dest.name) == 0) {
                 //System.out.println(" " + dest.name);
@@ -110,11 +106,9 @@ public boolean isPathExists(Graph g, Vertex source, Vertex dest) {
             }
 
             // Continue with BFS
-            if(!visitedMap.get(v.name)) {
-                visitedMap.put(v.name, true);
+            if(!visitedMap.get(vert.name)) {
                 queue.add(v);
             }
-
         }
     }
 

@@ -68,6 +68,26 @@ public Node inorderSuccessor(Node root, Node p) {
 
     return null;
 }
+
+public Node inorderSuccessor2Recurr(Node root, Node p){
+    return inorderSuccessor2Recurr(root, p, null, false);
+}
+public Node inorderSuccessor2Recurr(Node root, Node p, Node successor, boolean found){
+    if(p == null) return successor;
+
+    if(successor != null) return successor;
+
+    inorderSuccessor2Recurr(p.left, p, successor,found);
+    if(root == p) {
+        found = true;
+    } else if(found) {
+        succesor = root;
+        return succesor;
+    }
+    inorderSuccessor2Recurr(p.left, p, successor,found);
+
+    return successor;
+}
 /*
 ------------------------------ Solution 2 -------------------------------------
 */
@@ -82,15 +102,18 @@ public Node inorderSuccessor2(Node p) {
            return leftMostChild(p.right);
        } else {
            Node parent = p.parent;
-           // Move up till root
+           // Move up till root (stay on left instead of right)
            while(parent != null) {
                if(parent.left == p) break;
+               p = parent;
                parent = parent.parent;
            }
            return parent;
        }
     return null;
 }
+
+
 /*
 ------------------------------ Solution 3 -------------------------------------
 */

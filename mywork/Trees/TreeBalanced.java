@@ -43,10 +43,10 @@ public int getHeight2(Node root){
     if(root == null) return 0;
 
     int lh = getHeight2(root.left);
-    if(lh == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+    if(lh == Integer.MIN_VALUE) return lh;
 
     int rh = getHeight2(root.right);
-    if(rh == Integer.MIN_VALUE) return Integer.MIN_VALUE;
+    if(rh == Integer.MIN_VALUE) return rh;
 
     if(Math.abs(lh - rh) <= 1) {
         return Math.max(lh, rh) + 1;

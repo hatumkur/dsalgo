@@ -18,19 +18,19 @@ public class Pair{
 public ArrayList<Pair> pairOfSums(int[] array, int sum) {
     ArrayList<Pair> result = new ArrayList<Pair>();
     //Arrays.sort(array);
-    int first = 0;
-    int last = array.length - 1;
-    while (first < last) {
-        int s = array[first] + array[last];
+    int start = 0;
+    int end = array.length - 1;
+    while (start < end) {
+        int s = array[start] + array[end];
         if (s == sum) {
-            result.add(new Pair(array[first], array[last]));
-            ++first;
-            --last;
+            result.add(new Pair(array[start], array[end]));
+            ++start;
+            --end;
         } else {
             if (s < sum) {
-                ++first;
+                ++start;
             } else {
-                --last;
+                --end;
             }
         }
     }

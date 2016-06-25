@@ -31,24 +31,24 @@ private void merge(int[] a, int[] temp, int low, int mid, int high) {
         temp[i] = a[i];
     }
 
-    int tlow = low;
-    int thigh = mid + 1;
+    int t1 = low;
+    int t2 = mid + 1;
     int curr = low;
 
-    while(tlow <= mid && thigh <= high) {
-      if(temp[tlow] <= temp[thigh]) { // compare low & high values
-        a[curr] = temp[tlow];  // copy the low value to original array
-        tlow++;  // move the low cursor
+    while(t1 <= mid && t2 <= high) {
+      if(temp[t1] <= temp[t2]) { // compare low & high values
+        a[curr] = temp[t1];  // copy the low value to original array
+        t1++;  // move the low cursor
       } else {
-        a[curr] = temp[thigh]; // copy high value to original array
-        thigh++; // move the high cursor
+        a[curr] = temp[t2]; // copy high value to original array
+        t2++; // move the high cursor
       }
       curr++; // Move the current cursor
     }
 
     // copy remaining lowside of the array & high side will be already in place
-    int remaining = mid - tlow;
+    int remaining = mid - t1;
     for(int i = 0; i < remaining; i++) {
-      a[curr + i] = temp[tlow + 1];
+      a[curr + i] = temp[t1 + 1];
     }
 }

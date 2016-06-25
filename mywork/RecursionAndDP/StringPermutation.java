@@ -15,8 +15,7 @@ private void doPermute(char[] input, StringBuilder out, boolean[] used, int leng
 		print
 		return;
 	}
-
-	for(int i = 0; i < lenght; i++) {
+	for(int i = 0; i < length; i++) {
 		if(used[i]) continue;
 		out.append(input[i]);
 		used[i] = true;

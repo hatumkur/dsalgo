@@ -20,7 +20,8 @@ private int countPathWithSum(Node root, int sum, int currSum) {
     currSum += root.data;
     if(currSum == sum){
         totalCount++;
-    } else if(currSum > sum) {
+    }
+    if(currSum >= sum) {
         return totalCount;
     }
 

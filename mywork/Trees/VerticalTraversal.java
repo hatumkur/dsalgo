@@ -21,12 +21,14 @@ public TreeMap<Integer, ArrayList<Integer>> verticalTraversal(Node root, int lev
 
     if(root == null) return treemap;
 
-    ArrayList<Integer> arr = treemap.get(level);
-    if(arr == null) {
+    ArrayList<Integer> arr;
+    if(!treemap.containsKey(level)) {
         arr = new ArrayList<Integer>();
+        treemap.put(level,arr);
+    } else {
+        arr = treemap.get(level);
     }
     arr.add(root.data);
-    treemap.put(level,arr);
 
     if(root.left != null) verticalTraversal(root.left, --level, treemap);
     if(root.right != null) verticalTraversal(root.right, ++level, treemap);

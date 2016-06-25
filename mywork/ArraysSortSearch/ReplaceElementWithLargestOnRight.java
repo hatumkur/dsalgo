@@ -42,7 +42,6 @@ static void nextGreatest(int arr[])
         arr[i] = max_from_right;
 
         // Update the greatest element, if needed
-        if(max_from_right < temp)
-        max_from_right = temp;
+        if(max_from_right < temp) max_from_right = temp;
     }
 }

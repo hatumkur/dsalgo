@@ -38,7 +38,7 @@ private Node findLCA(Node root, Node p, Node q) {
 
     Node next = (pfoundLeft) ? root.left : root.right;
 
-    return findLca(next,p,q);
+    return findLCA(next,p,q);
 }
 
 public Node lowestCommonAncesor(Node root, Node p, Node q) {

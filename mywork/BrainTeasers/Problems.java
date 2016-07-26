@@ -22,7 +22,7 @@
         1_ 3 5_ 7 9_
         3_ 7
 
-(5) Crossing the bridge 10 5 2 1
+(5) Crossing the bridge 8 5 2 1  => 15 mins
 
 (6) Egg drop N = 100, so that number of drops are minimum?
         Solution: 14  => 8 drops

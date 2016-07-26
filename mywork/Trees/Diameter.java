@@ -21,7 +21,7 @@ public int getDiameter(Node root) {
 
     /*
     Return max of following three
-              1) Diameter of left subtree
+             1) Diameter of left subtree
              2) Diameter of right subtree
              3) Height of left subtree + height of right subtree + 1
     */

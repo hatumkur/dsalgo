@@ -16,7 +16,7 @@ public boolean isValid(String inputStr) {
 
 	for(int i = 0; i < input.length; i++) {
 		if(isOpenParenthesis(input[i])) {
-			stack2.push(input[i]);
+			stack.push(input[i]);
 		} else {
 			if(stack.isEmpty()) return false;
 			char temp = stack.pop();

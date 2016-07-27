@@ -38,7 +38,7 @@ int binarySearchRecur(int[] a, int elem, int low, int high) {
   } else {
     return mid;
   }
-
+  
   return -1;
 }
 
